@@ -49,4 +49,9 @@ can send me an email with a patch of your commit(s).
       - test_range_based_for<array<string,3>>
     - Move semantic
       - test_move_semantic
+      - test_move_assignments  
+    - Variadic templates
+      - test_variadic_templates
+      - addition
+      - multiplication  
 
