@@ -29,8 +29,6 @@ int main(int argc, char** argv)
     using test_vector_rbfor = test_range_based_for<vector<string>>;
     using test_array_rbfor  = test_range_based_for<array<string,3>>;
 
-    auto evias_suite = new unit_test::suite("eVias C++11");
-
     /* Instanciate the unitary test suite. */
     auto rbfor_suite = new unit_test::suite("Range based for-loop", {
         new test_map_rbfor("Range based For-loop <map<string, string>>"),
@@ -40,8 +38,7 @@ int main(int argc, char** argv)
     auto mvsem_suite = new unit_test::suite("Move semantic classes", {
         new test_move_semantic("'Move semantic'-only c++11 class definition")});
 
-    evias_suite->addSuite(rbfor_suite);
-    evias_suite->addSuite(mvsem_suite);
+    auto evias_suite = new unit_test::suite("eVias C++11", {rbfor_suite, mvsem_suite});
     evias_suite->run();
 
     delete rbfor_suite;

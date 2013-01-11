@@ -32,6 +32,7 @@ namespace unit_test {
     public :
 
         suite(std::string);
+        suite(std::string, std::initializer_list<suite*>);
         suite(std::string, std::initializer_list<test*>);
 
         bool run();

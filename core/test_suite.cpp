@@ -13,6 +13,11 @@ suite::suite(std::string n)
 
 }
 
+suite::suite(std::string n, std::initializer_list<suite*> suites)
+    : name_(n), suites_(suites)
+{
+}
+
 suite::suite(std::string n, std::initializer_list<test*> tests)
     : name_(n), tests_(tests)
 {
