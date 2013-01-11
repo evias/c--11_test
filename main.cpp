@@ -26,13 +26,20 @@ int main(int argc, char** argv)
     using test_vector_rbfor = test_range_based_for<vector<string>>;
     using test_array_rbfor  = test_range_based_for<array<string,3>>;
 
+    auto evias_suite = new unit_test::suite("eVias C++11");
+
     /* Instanciate the unitary test suite. */
-    auto thesuite = new unit_test::suite({
+    auto rbfor_suite = new unit_test::suite("Range based for-loop", {
         new test_map_rbfor("Range based For-loop <map<string, string>>"),
         new test_vector_rbfor("Range based For-loop <vector<string>>"),
         new test_array_rbfor("Range based For-loop <array<string,3>>")});
 
-    thesuite->run();
+    evias_suite->addSuite(rbfor_suite);
+    evias_suite->run();
+
+    delete rbfor_suite;
+    delete evias_suite;
+
     return 0;
 }
 
