@@ -16,49 +16,51 @@ suite::suite(std::string n)
 suite::suite(std::string n, std::initializer_list<test*> tests)
     : name_(n), tests_(tests)
 {
-
 }
 
 bool suite::run()
 {
-    if (! suites_.empty()) {
+    /* First run all sub-suites. */
+    for (auto s : suites_) {
 
-        for (auto s : suites_) {
+        std::cout << "Running test suite '" << s->getName() << "' ..."
+                  << std::endl;
 
-            std::cout << "Running test suite '" << s->getName() << "' ..."
-                      << std::endl;
+        s->run();
 
-            s->run();
-
-            std::cout << std::endl;
-        }
+        std::cout << std::endl;
     }
 
-    if (! tests_.empty()) {
+    /* Then run stand-alone tests configured. */
+    return run_tests();
+}
 
-        for (auto t : tests_) {
-            message_t type;
-            std::string res = "Result for '" + t->getName() + "':";
+bool suite::run_tests()
+{
+    bool failure = false;
+    for (auto t : tests_) {
+        message_t type;
+        std::string res = "Result for '" + t->getName() + "':";
 
-            try {
-                (*t)();
+        try {
+            (*t)();
 
-                type = INFO;
-                res += " [SUCCESS]";
-            }
-            catch (test_exception e) {
-
-                std::cout << e.what() << std::endl;
-
-                type = ERROR;
-                res += " [FAILURE]";
-            }
-
-            print(res, type);
+            type = INFO;
+            res += " [SUCCESS]";
         }
+        catch (test_exception e) {
+
+            std::cout << e.what() << std::endl;
+
+            type = ERROR;
+            res += " [FAILURE]";
+            failure = true;
+        }
+
+        print(res, type);
     }
 
-    return true;
+    return !failure;
 }
 
 void suite::print(std::string msg, message_t type)

@@ -40,6 +40,9 @@ namespace unit_test {
         std::string getName() throw();
         void setName(std::string) throw();
         void addSuite(suite*);
+
+    private:
+        bool run_tests();
     };
 
 }
