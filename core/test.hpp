@@ -20,8 +20,8 @@ namespace unit_test {
         : public std::exception
     {
         std::string msg_;
-    public:
 
+    public:
         test_exception(std::string);
         const char* what() const throw();
     };
@@ -29,11 +29,9 @@ namespace unit_test {
     class test
     {
     protected:
-
         std::string name_;
 
     public:
-
         test(std::string);
 
         std::string getName();
