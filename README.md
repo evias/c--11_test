@@ -43,7 +43,7 @@ can send me an email with a patch of your commit(s).
 
 ## Modules
 
-- Range based for-loop
-    - test_range_based_for<map<string,string>>
-    - test_range_based_for<vector<string>>
+    - Range based for-loop
+      - test_range_based_for<map<string,string>>
+      - test_range_based_for<vector<string>>
 
