@@ -49,6 +49,17 @@ namespace unit_test {
         test_move_semantic& operator=(const test_move_semantic&) = delete;
     };
 
+    class test_move_assignments
+        : public test
+    {
+    protected :
+        std::string name_;
+
+    public:
+        test_move_assignments(std::string);
+        bool operator()();
+    };
+
 }
 }
 

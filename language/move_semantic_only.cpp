@@ -39,3 +39,22 @@ bool test_move_semantic::operator()()
 
     return true;
 }
+
+/**
+ * Class test_move_assignments
+ */
+test_move_assignments::test_move_assignments(std::string n)
+    : test(n)
+{
+}
+
+bool test_move_assignments::operator()()
+{
+    int lvalue1 = 5;
+    int lvalue2 = 6;
+
+    int rvalue1 = std::move(lvalue1);
+    int rvalue2 = std::move(lvalue2);
+
+    return true;
+}
