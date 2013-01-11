@@ -10,6 +10,7 @@ OBJECTS = build/main.o build/test.o build/test_suite.o build/range_based_for.o
 
 clean :
 	rm -f ${JUNK_DIR}/*.o
+	rm -f ${TARGET}
 
 all : buildCore rangeBasedFor
 	@echo " "
