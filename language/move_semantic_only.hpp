@@ -15,6 +15,17 @@
 namespace evias {
 namespace unit_test {
 
+    /**
+     * This class tests the class definition
+     * feature such as "delete" for method declarations.
+     * This feature is tested by disabling the copy constructor
+     * and copy assignment operator.
+     *
+     * C++11 Features covered:
+     *  - std::move
+     *  - rvalue-references (see move constructor)
+     *  - delete method descriptor
+     */
     class test_move_semantic
         : public test
     {
@@ -36,7 +47,6 @@ namespace unit_test {
          */
         test_move_semantic(const test_move_semantic&) = delete;
         test_move_semantic& operator=(const test_move_semantic&) = delete;
-
     };
 
 }

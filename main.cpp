@@ -21,11 +21,11 @@ int main(int argc, char** argv)
     using std::vector;
     using std::array;
     using std::string;
-    
+
     using unit_test::test_range_based_for;
     using unit_test::test_move_semantic;
 
-    using test_map_rbfor    = test_range_based_for<map<string,string>>;
+    using test_map_rbfor    = test_range_based_for<map<int,string>>;
     using test_vector_rbfor = test_range_based_for<vector<string>>;
     using test_array_rbfor  = test_range_based_for<array<string,3>>;
 

@@ -5,12 +5,12 @@
 using namespace evias;
 using namespace unit_test;
 
-test_range_based_for<std::map<std::string,std::string>>::test_range_based_for(std::string n)
+test_range_based_for<std::map<int,std::string>>::test_range_based_for(std::string n)
     : test(n)
 {
 }
 
-bool test_range_based_for<std::map<std::string,std::string>>::operator()()
+bool test_range_based_for<std::map<int,std::string>>::operator()()
 {
     std::map<int,std::string> container = {
         {1, "test1"},

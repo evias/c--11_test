@@ -25,7 +25,14 @@ namespace unit_test {
      *
      * This class is declared as final as no other
      * unitary test will overload functionalities of it.
+     *
+     * C++11 Features covered:
+     *  - auto
+     *  - range based for-loop with map<int,string>
+     *  - range based for-loop with vector<string>
+     *  - range based for-loop with array<string,3>
      **/
+
     template <typename container_t>
     class test_range_based_for final : public test {};
 
@@ -35,7 +42,7 @@ namespace unit_test {
      * test_range_based_for<map<string,string>>
      */
     template <>
-    class test_range_based_for<std::map<std::string,std::string>> final
+    class test_range_based_for<std::map<int,std::string>> final
         : public test
     {
     protected:
