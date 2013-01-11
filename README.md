@@ -46,4 +46,7 @@ can send me an email with a patch of your commit(s).
     - Range based for-loop
       - test_range_based_for<map<string,string>>
       - test_range_based_for<vector<string>>
+      - test_range_based_for<array<string,3>>
+    - Move semantic
+      - test_move_semantic
 
