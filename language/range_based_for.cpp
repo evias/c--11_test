@@ -47,6 +47,28 @@ bool test_range_based_for<std::vector<std::string>>::operator()()
 
     return true;
 }
+
+test_range_based_for<std::array<std::string,3>>::test_range_based_for(std::string n)
+    : test(n)
+{
+}
+
+bool test_range_based_for<std::array<std::string,3>>::operator()()
+{
+    std::array<std::string,3> container = {{
+        "firststr", "secondstr", "thirdstr"}};
+
+    int i = 0;
+    for (auto it : container) {
+        if (it != "firststr"
+            && it != "secondstr"
+            && it != "thirdstr")
+            return false;
+    }
+
+    return true;
+}
+
 //
 //bool test_array_rbfor()
 //{

@@ -64,7 +64,23 @@ namespace unit_test {
     };
 
     /**
-     * XXX test_range_based_for<array<int,3>>
+     * Class template specialization
+     *
+     * test_range_based_for<vector<string>>
+     */
+    template <>
+    class test_range_based_for<std::array<std::string,3>> final
+        : public test
+    {
+    protected:
+        std::string name_;
+
+    public:
+        test_range_based_for(std::string);
+        bool operator()();
+    };
+
+    /**
      * XXX test_range_based_for<string[]>
      * XXX test_range_based_for<string>
      **/
