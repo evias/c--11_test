@@ -15,12 +15,21 @@ using namespace evias;
 
 int main(int argc, char** argv)
 {
+    /* Improve readability. */
+    using unit_test::test_range_based_for;
+    using std::map;
+    using std::vector;
+    using std::string;
+
+    using test_map_rbfor    = test_range_based_for<map<string,string>>;
+    using test_vector_rbfor = test_range_based_for<vector<string>>;
+
+    /* Instanciate the unitary test suite. */
     auto thesuite = new unit_test::suite({
-        new unit_test::test_range_based_for<std::map<std::string,std::string>>("Range based For-loop <map<string, string>>"),
-        new unit_test::test_range_based_for<std::vector<std::string>>("Range based For-loop <vector<string>>")});
+        new test_map_rbfor("Range based For-loop <map<string, string>>"),
+        new test_vector_rbfor("Range based For-loop <vector<string>>")});
 
     thesuite->run();
-
     return 0;
 }
 

@@ -41,6 +41,8 @@ bool suite::run()
 
         print(res, type);
     }
+
+    return true;
 }
 
 void suite::print(std::string msg, message_t type)
