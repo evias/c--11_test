@@ -25,15 +25,21 @@ namespace unit_test {
     class suite
     {
         std::vector<test*>   tests_;
+        std::vector<suite*>  suites_;
+
+        std::string name_;
 
     public :
 
-        suite();
-        suite(std::initializer_list<test*>);
+        suite(std::string);
+        suite(std::string, std::initializer_list<test*>);
 
         bool run();
-
         void print(std::string, message_t);
+
+        std::string getName() throw();
+        void setName(std::string) throw();
+        void addSuite(suite*);
     };
 
 }
