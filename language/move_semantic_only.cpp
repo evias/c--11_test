@@ -3,6 +3,9 @@
 using namespace evias;
 using namespace unit_test;
 
+/**
+ * Class test_move_semantic
+ */
 test_move_semantic::test_move_semantic(std::string n)
     : test(n)
 {
@@ -55,6 +58,12 @@ bool test_move_assignments::operator()()
 
     int rvalue1 = std::move(lvalue1);
     int rvalue2 = std::move(lvalue2);
+
+    if (rvalue1 != lvalue1)
+        return false;
+
+    if (rvalue2 != lvalue2)
+        return false;
 
     return true;
 }
