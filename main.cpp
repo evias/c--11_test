@@ -10,6 +10,7 @@
 
 #include "language/range_based_for.hpp"
 #include "language/move_semantic_only.hpp"
+#include "language/variadic_templates.hpp"
 
 using namespace std;
 using namespace evias;
@@ -25,6 +26,7 @@ int main(int argc, char** argv)
     using unit_test::test_range_based_for;
     using unit_test::test_move_semantic;
     using unit_test::test_move_assignments;
+    using unit_test::test_variadic_templates;
 
     using test_map_rbfor    = test_range_based_for<map<int,string>>;
     using test_vector_rbfor = test_range_based_for<vector<string>>;
@@ -40,11 +42,18 @@ int main(int argc, char** argv)
         new test_move_semantic("'Move semantic'-only c++11 class definition"),
         new test_move_assignments("Move-semantic assignments")});
 
-    auto evias_suite = new unit_test::suite("eVias C++11", {rbfor_suite, mvsem_suite});
+    auto temp_suite = new unit_test::suite("Variadic templates features", {
+        new test_variadic_templates("Template calculator operations")});
+
+    auto evias_suite = new unit_test::suite("eVias C++11", {
+            rbfor_suite,
+            mvsem_suite,
+            temp_suite});
     evias_suite->run();
 
     delete rbfor_suite;
     delete mvsem_suite;
+    delete temp_suite;
     delete evias_suite;
 
     return 0;

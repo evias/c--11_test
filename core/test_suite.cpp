@@ -48,14 +48,13 @@ bool suite::run_tests()
         std::string res = "Result for '" + t->getName() + "':";
 
         try {
-            (*t)();
+            if (! (*t)())
+                throw test_exception("");
 
             type = INFO;
             res += " [SUCCESS]";
         }
         catch (test_exception e) {
-
-            std::cout << e.what() << std::endl;
 
             type = ERROR;
             res += " [FAILURE]";
