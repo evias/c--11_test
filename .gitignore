@@ -1,0 +1,3 @@
+build/*.o
+c++11_test_suite
+nbproject
