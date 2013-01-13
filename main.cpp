@@ -11,6 +11,7 @@
 #include "language/range_based_for.hpp"
 #include "language/move_semantic_only.hpp"
 #include "language/variadic_templates.hpp"
+#include "language/variadic_dbrow.hpp"
 
 using namespace std;
 using namespace evias;
@@ -27,6 +28,7 @@ int main(int argc, char** argv)
     using unit_test::test_move_semantic;
     using unit_test::test_move_assignments;
     using unit_test::test_variadic_templates;
+    using unit_test::test_variadic_dbrow;
 
     using test_map_rbfor    = test_range_based_for<map<int,string>>;
     using test_vector_rbfor = test_range_based_for<vector<string>>;
@@ -43,7 +45,8 @@ int main(int argc, char** argv)
         new test_move_assignments("Move-semantic assignments")});
 
     auto temp_suite = new unit_test::suite("Variadic templates features", {
-        new test_variadic_templates("Template calculator operations")});
+        new test_variadic_templates("Template calculator operations"),
+        new test_variadic_dbrow("Variadic database row template class")});
 
     auto evias_suite = new unit_test::suite("eVias C++11", {
             rbfor_suite,
