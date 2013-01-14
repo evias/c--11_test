@@ -3,7 +3,7 @@ TARGET=c++11_test_suite
 JUNK_DIR=build
 
 CXX = g++-4.7
-CXX_OPTS = --std=c++0x -c
+CXX_OPTS = --std=c++0x -Icore/ -c
 
 CORE = build/main.o \
        build/test.o \
@@ -12,7 +12,8 @@ CORE = build/main.o \
 LANGUAGE = build/range_based_for.o \
 	   build/move_semantic_only.o \
 	   build/variadic_templates.o \
-	   build/variadic_dbrow.o
+	   build/variadic_dbrow.o \
+	   build/initializer_lists.o
 
 # Makefile rules
 clean :
@@ -31,9 +32,10 @@ buildCore : core/test.hpp core/test_suite.hpp
 	${CXX} ${CXX_OPTS} core/test.cpp -o build/test.o
 	${CXX} ${CXX_OPTS} core/test_suite.cpp -o build/test_suite.o
 
-buildLanguageTests : language/range_based_for.hpp language/move_semantic_only.hpp language/variadic_templates.hpp language/variadic_dbrow.hpp
+buildLanguageTests : language/range_based_for.hpp language/move_semantic_only.hpp language/variadic_templates.hpp language/variadic_dbrow.hpp language/initializer_lists.hpp
 	@echo " "
 	${CXX} ${CXX_OPTS} language/range_based_for.cpp -o build/range_based_for.o
 	${CXX} ${CXX_OPTS} language/move_semantic_only.cpp -o build/move_semantic_only.o
 	${CXX} ${CXX_OPTS} language/variadic_templates.cpp -o build/variadic_templates.o
 	${CXX} ${CXX_OPTS} language/variadic_dbrow.cpp -o build/variadic_dbrow.o
+	${CXX} ${CXX_OPTS} language/initializer_lists.cpp -o build/initializer_lists.o

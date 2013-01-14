@@ -50,7 +50,7 @@ namespace unit_test {
 
     public :
         test_range_based_for(std::string);
-        bool operator()();
+        bool operator()() final override;
     };
 
     /**
@@ -67,7 +67,7 @@ namespace unit_test {
 
     public:
         test_range_based_for(std::string);
-        bool operator()();
+        bool operator()() final override;
     };
 
     /**
@@ -84,7 +84,7 @@ namespace unit_test {
 
     public:
         test_range_based_for(std::string);
-        bool operator()();
+        bool operator()() final override;
     };
 
     /**

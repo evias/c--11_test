@@ -5,13 +5,14 @@
  * Created on January 5, 2013, 5:49 PM
  */
 
-#include "core/test.hpp"
-#include "core/test_suite.hpp"
+#include "test.hpp"
+#include "test_suite.hpp"
 
 #include "language/range_based_for.hpp"
 #include "language/move_semantic_only.hpp"
 #include "language/variadic_templates.hpp"
 #include "language/variadic_dbrow.hpp"
+#include "language/initializer_lists.hpp"
 
 using namespace std;
 using namespace evias;
@@ -29,6 +30,7 @@ int main(int argc, char** argv)
     using unit_test::test_move_assignments;
     using unit_test::test_variadic_templates;
     using unit_test::test_variadic_dbrow;
+    using unit_test::test_initializer_list;
 
     using test_map_rbfor    = test_range_based_for<map<int,string>>;
     using test_vector_rbfor = test_range_based_for<vector<string>>;
@@ -48,15 +50,20 @@ int main(int argc, char** argv)
         new test_variadic_templates("Template calculator operations"),
         new test_variadic_dbrow("Variadic database row template class")});
 
+    auto list_suite = new unit_test::suite("Initializer list features", {
+        new test_initializer_list("Initializer lists constructor")});
+
     auto evias_suite = new unit_test::suite("eVias C++11", {
             rbfor_suite,
             mvsem_suite,
-            temp_suite});
+            temp_suite,
+            list_suite});
     evias_suite->run();
 
     delete rbfor_suite;
     delete mvsem_suite;
     delete temp_suite;
+    delete list_suite;
     delete evias_suite;
 
     return 0;

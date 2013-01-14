@@ -8,7 +8,7 @@
 #ifndef VARIADIC_DBROW_HPP
 #define	VARIADIC_DBROW_HPP
 
-#include "../core/test.hpp"
+#include "test.hpp"
 #include <string>
 #include <tuple>
 
@@ -25,6 +25,21 @@ namespace unit_test {
      *   - Parameter packs
      *
      **/
+
+    /**
+     * Unitary test entry
+     **/
+    class test_variadic_dbrow
+        : public test
+    {
+    protected:
+        std::string name_;
+    public:
+        test_variadic_dbrow(std::string);
+        bool operator()() final override;
+    };
+
+    /* Variadic template class */
     template <typename ... _fields_types>
     class dbRow
     {
@@ -62,19 +77,6 @@ namespace unit_test {
 
         int getFirstID() throw();
         int getSecondID() throw();
-    };
-
-    /**
-     * Unitary test entry
-     **/
-    class test_variadic_dbrow
-        : public test
-    {
-    protected:
-        std::string name_;
-    public:
-        test_variadic_dbrow(std::string);
-        bool operator()();
     };
 
 }

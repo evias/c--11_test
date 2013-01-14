@@ -8,7 +8,7 @@
 #ifndef VARIADIC_TEMPLATES_HPP
 #define	VARIADIC_TEMPLATES_HPP
 
-#include "../core/test.hpp"
+#include "test.hpp"
 #include <string>
 
 namespace evias {
@@ -27,7 +27,7 @@ namespace unit_test {
 
     public:
         test_variadic_templates(std::string);
-        bool operator()();
+        bool operator()() final override;
     };
 
     template <int ...> struct addition;

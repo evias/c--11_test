@@ -38,7 +38,7 @@ namespace unit_test {
         test_move_semantic(test_move_semantic&&);
         test_move_semantic& operator=(test_move_semantic&&);
         void                setContent(int) throw();
-        bool                operator()();
+        bool                operator()() final override;
 
         /**
          * Copy constructor and copy assignment operator
@@ -57,7 +57,7 @@ namespace unit_test {
 
     public:
         test_move_assignments(std::string);
-        bool operator()();
+        bool operator()() final override;
     };
 
 }

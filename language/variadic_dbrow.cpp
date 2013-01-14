@@ -63,40 +63,31 @@ test_variadic_dbrow::test_variadic_dbrow(std::string n)
 bool test_variadic_dbrow::operator()()
 {
     /* Prepare rows data */
-    auto val1_1 = std::tuple<int, std::string, std::string>{1, "boost", "Wt"};
-    auto val1_2 = std::tuple<int, std::string, std::string>{2, "Zend Framework", "CakePHP"};
-    auto val1_3 = std::tuple<int, std::string, std::string>{3, "Qt", "pqxx"};
+    auto val1 = std::tuple<int, std::string, std::string>{1, "boost", "Wt"};
+    auto val2 = std::tuple<std::string, std::string, std::string>{"greg@evias.be", "Greg", "Saive"};
 
-    auto val2_1 = std::tuple<std::string, std::string, std::string>{"greg@evias.be", "Greg", "Saive"};
-    auto val2_2 = std::tuple<std::string, std::string, std::string>{"so@evias.be", "Sophie", "TuSaurasPas"};
-    auto val2_3 = std::tuple<std::string, std::string, std::string>{"gregso@evias.be", "Greg", "Sophie"};
+    /* Instantiate rows */
+    auto row1 = new dbRow<int,std::string,std::string>("table1", "pkey1", val1);
+    auto row2 = new dbRow<std::string,std::string,std::string>("table2", "pkey2", val2);
+    auto row3 = new dbRow<int,int>(std::tuple<int,int>{1, 2});
 
-    auto row1_1 = new dbRow<int,std::string,std::string>("table1", "pkey1", val1_1);
-    auto row1_2 = new dbRow<int,std::string,std::string>("table1", "pkey1", val1_2);
-    auto row1_3 = new dbRow<int,std::string,std::string>("table1", "pkey1", val1_3);
-
-    auto row2_1 = new dbRow<std::string,std::string,std::string>("table2", "pkey2", val2_1);
-    auto row2_2 = new dbRow<std::string,std::string,std::string>("table2", "pkey2", val2_2);
-    auto row2_3 = new dbRow<std::string,std::string,std::string>("table2", "pkey2", val2_3);
-
-    if (std::get<1>(row1_1->getValues()) != "boost")
+    /* Check data */
+    if (std::get<0>(row1->getValues()) != 1
+        || std::get<1>(row1->getValues()) != "boost"
+        || std::get<2>(row1->getValues()) != "Wt")
         return false;
 
-    if (std::get<1>(row2_2->getValues()) != "Sophie")
+    if (std::get<0>(row2->getValues()) != "greg@evias.be"
+        || std::get<1>(row2->getValues()) != "Greg"
+        || std::get<2>(row2->getValues()) != "Saive")
         return false;
 
-    if (std::get<0>(row1_3->getValues()) != 3)
+    if (row3->getFirstID() != 1 || row3->getSecondID() != 2)
         return false;
 
-    if (row1_1->getRelation() != "table1")
-        return false;
-
-    delete row1_1;
-    delete row1_2;
-    delete row1_3;
-    delete row2_1;
-    delete row2_2;
-    delete row2_3;
+    delete row1;
+    delete row2;
+    delete row3;
 
     return true;
 }
