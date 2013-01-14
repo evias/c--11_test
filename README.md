@@ -53,5 +53,9 @@ can send me an email with a patch of your commit(s).
     - Variadic templates
       - test_variadic_templates
       - addition
-      - multiplication  
+      - multiplication
+      - dbRow variadic template class  
+      - test_variadic_dbrow  
+    - Initializer lists
+      - test_initializer_list
 
